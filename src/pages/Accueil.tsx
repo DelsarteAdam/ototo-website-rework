@@ -1,8 +1,10 @@
+import TopHeader from "../components/TopHeader";
+
 function Accueil() {
   return (
-    <div>
-      <p>Acceuil</p>
-    </div>
+    <>
+      <TopHeader />
+    </>
   );
 }
 
