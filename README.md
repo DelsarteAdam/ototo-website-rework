@@ -3,9 +3,12 @@
 ## rework of the website of ototo manga publisher
 
 > [!IMPORTANT]
-> all pictures and assets are copyrighted by them and the original author/publisher
+> all pictures and assets are copyrighted by them and the originals authors/publishers
 
-[📖 original website 📖](https://www.ototo.fr/){.btn .btn-info}
+[![Button Icon]][Link]
+
+[Link]: # "https://www.ototo.fr/"
+[Button Icon]: https://img.shields.io/badge/📖%20original%20website%20📖-97be0d?style=for-the-badge&logoColor=white
 
 ---
 
