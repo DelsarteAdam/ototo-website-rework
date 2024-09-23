@@ -1,9 +1,11 @@
-import TopHeader from "../components/TopHeader";
+import Header from "../components/Header";
+import SocialStickyLink from "../components/SocialStickyLink";
 
 function Accueil() {
   return (
     <>
-      <TopHeader />
+      <SocialStickyLink />
+      <Header />
     </>
   );
 }

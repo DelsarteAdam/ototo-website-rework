@@ -1,4 +1,8 @@
-.header {
+@use "sass:color";
+
+@import "../typoColor.scss";
+
+.topHeader {
   display: flex;
   flex-direction: row;
   height: 5vh;
@@ -6,7 +10,8 @@
   justify-content: flex-end;
   padding-right: 2vw;
   align-items: center;
-  position: sticky;
+  position: absolute;
+  top: 0;
 }
 
 .container {
@@ -14,20 +19,15 @@
   flex-direction: row;
 }
 
-.logo {
-  height: 90%;
-  width: auto;
-}
-
 .social {
   height: 5vh;
   width: auto;
   aspect-ratio: 1/1;
-  background-color: blueviolet;
-  border-right: 1px solid rgb(255, 255, 255);
+  background-color: $color3;
+  border-right: 1px solid $color2;
   align-content: center;
   &:hover {
-    background-color: beige;
+    background-color: color.scale($color3, $lightness: 20%);
   }
   img {
     margin: auto;
