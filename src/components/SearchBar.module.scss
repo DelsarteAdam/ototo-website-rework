@@ -1,0 +1,23 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  background-color: white;
+  border-radius: 10px;
+  width: 100%;
+  padding: 5px 5px;
+  align-items: center;
+  border: 1px solid gray;
+
+  input {
+    background-color: transparent;
+    border: none;
+    height: 100%;
+    font-size: 1.25rem;
+
+    &:focus {
+      outline-style: none;
+      box-shadow: none;
+      border-color: transparent;
+    }
+  }
+}

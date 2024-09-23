@@ -1,0 +1,16 @@
+@import "../typoColor.scss";
+
+.footer {
+  display: flex;
+  flex-direction: row;
+  height: 25vh;
+  background-color: $color1;
+  color: white;
+  align-items: center;
+  justify-content: center;
+}
+
+.middle {
+  border-left: 1px solid white;
+  border-right: 1px solid white;
+}

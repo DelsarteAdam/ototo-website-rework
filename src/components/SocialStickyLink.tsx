@@ -63,7 +63,9 @@ function SocialStickyLink() {
         {socialMedia.map((site, i) => (
           <a
             href={site.link}
-            className={styles.social}
+            className={`${styles.social} ${i == 0 ? styles.left : ""} ${
+              i == socialMedia.length - 1 ? styles.right : ""
+            }`}
             key={i}
             target="_blank"
             rel="noopener noreferrer"

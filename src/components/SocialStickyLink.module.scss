@@ -37,3 +37,12 @@
     aspect-ratio: 1/1;
   }
 }
+
+.left {
+  border-bottom-left-radius: 10px;
+}
+
+.right {
+  border-bottom-right-radius: 10px;
+  border-right: none;
+}

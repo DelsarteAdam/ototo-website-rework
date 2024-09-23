@@ -1,1 +1,10 @@
 @import "reset.scss";
+
+#root {
+  display: flex;
+  flex-direction: column;
+}
+
+.flexGrow {
+  flex-grow: 1;
+}
