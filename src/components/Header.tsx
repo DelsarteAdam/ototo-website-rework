@@ -6,12 +6,14 @@ function Header() {
     <header className={styles.header}>
       <section className={styles.section}>
         <img src="icons/logo.png" alt="ototo logo" className={styles.logo} />
-        <ul className={styles.list}>
-          <li>catalogue</li>
-          <li>actualité</li>
-          <li>contact</li>
-        </ul>
-        <SearchBar />
+        <div className={styles.container}>
+          <ul className={styles.list}>
+            <li>catalogue</li>
+            <li>actualité</li>
+            <li>contact</li>
+          </ul>
+          <SearchBar />
+        </div>
       </section>
     </header>
   );
