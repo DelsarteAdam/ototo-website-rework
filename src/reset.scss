@@ -96,3 +96,13 @@ textarea:not([rows]) {
 ul {
   list-style-type: none;
 }
+
+/* link reset */
+
+a,
+a:hover,
+a:focus,
+a:active {
+  text-decoration: none;
+  color: inherit;
+}

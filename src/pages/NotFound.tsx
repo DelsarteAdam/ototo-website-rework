@@ -1,8 +1,16 @@
+import Div404 from "../components/Div404";
+import Footer from "../components/Footer";
+import Header from "../components/Header";
+import SocialStickyLink from "../components/SocialStickyLink";
+
 function NotFound() {
   return (
-    <div>
-      <p>Error 404</p>
-    </div>
+    <>
+      <SocialStickyLink />
+      <Header />
+      <Div404 />
+      <Footer />
+    </>
   );
 }
 

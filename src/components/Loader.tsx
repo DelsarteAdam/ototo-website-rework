@@ -15,7 +15,7 @@ function Loader() {
           cy="20"
           r="17.5"
           pathLength="100"
-          stroke-width="5px"
+          strokeWidth="5px"
           fill="none"
         />
         <circle
@@ -24,7 +24,7 @@ function Loader() {
           cy="20"
           r="17.5"
           pathLength="100"
-          stroke-width="5px"
+          strokeWidth="5px"
           fill="none"
         />
       </svg>

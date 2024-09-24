@@ -40,3 +40,15 @@
   align-items: center;
   height: 100%;
 }
+
+.active {
+  color: $color5;
+}
+
+.logoLink {
+  height: 100%;
+  align-items: center;
+
+  display: flex;
+  justify-content: center;
+}

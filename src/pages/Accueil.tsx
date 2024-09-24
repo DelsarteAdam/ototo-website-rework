@@ -1,15 +1,27 @@
-import Footer from "../components/Footer";
-import Header from "../components/Header";
-
-import SocialStickyLink from "../components/SocialStickyLink";
+import { useEffect } from "react";
+import { useMangaApi } from "../context/useMangaApi";
 
 function Accueil() {
+  const apiContext = useMangaApi();
+
+  const { mangaData, fetchMangaData } = apiContext || {
+    mangaData: null,
+    fetchMangaData: () => {},
+  }; // if api  down , remplace by null and empty function
+
+  useEffect(() => {
+    if (apiContext) {
+      fetchMangaData(); // Call only if apiContext is available
+    }
+  }, [apiContext, fetchMangaData]);
+
+  if (!apiContext) {
+    return <p>Loading...</p>;
+  }
   return (
     <>
-      <SocialStickyLink />
-      <Header />
-
-      <Footer />
+      <p>acceuil</p>
+      {JSON.stringify(mangaData)}
     </>
   );
 }

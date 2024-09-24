@@ -10,29 +10,48 @@ import Accueil from "./pages/Accueil";
 import Catalogue from "./pages/Catalogue";
 import Contact from "./pages/Contact";
 import Planning from "./pages/Planning";
+import Actualite from "./pages/Actualite";
 import NotFound from "./pages/NotFound";
+import Layout from "./pages/Layout";
+
+import { MangaApiProvider } from "./context/useMangaApi";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Navigate to="/accueil" replace />,
-  },
-  {
-    path: "/accueil",
-    element: <Accueil />,
+    element: <Layout />,
     errorElement: <NotFound />,
-  },
-  {
-    path: "/catalogue",
-    element: <Catalogue />,
-  },
-  {
-    path: "/contact",
-    element: <Contact />,
-  },
-  {
-    path: "/planning",
-    element: <Planning />,
+    children: [
+      {
+        index: true, // This makes "/accueil" the default route for "/"
+        element: <Navigate to="/accueil" replace />,
+      },
+      {
+        path: "accueil",
+        element: (
+          <MangaApiProvider>
+            <Accueil />
+          </MangaApiProvider>
+        ),
+        errorElement: <NotFound />,
+      },
+      {
+        path: "catalogue",
+        element: <Catalogue />,
+      },
+      {
+        path: "actualite",
+        element: <Actualite />,
+      },
+      {
+        path: "contact",
+        element: <Contact />,
+      },
+      {
+        path: "planning",
+        element: <Planning />,
+      },
+    ],
   },
 ]);
 
