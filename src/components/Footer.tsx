@@ -3,27 +3,31 @@ import styles from "./Footer.module.scss";
 function Footer() {
   return (
     <footer className={styles.footer}>
-      <section>
-        <ul>
-          <li>catalogue</li>
-          <li>planning</li>
-          <li>lecture en ligne</li>
-          <li>contact</li>
-          <li>newsLetter</li>
-        </ul>
-      </section>
-      <section className={styles.middle}>
-        <ul>
-          <li>code prix</li>
-          <li>Diffuseur Makassar</li>
-          <li>Distributeur MDS</li>
-        </ul>
-      </section>
-      <section>
-        <h3>partenaires</h3>
-        <p>japan FM</p>
-        <p>subarashii</p>
-      </section>
+      <div className={styles.container}>
+        <section>
+          <ul>
+            <li>catalogue</li>
+            <li>planning</li>
+            <li>lecture en ligne</li>
+            <li>contact</li>
+            <li>newsLetter</li>
+          </ul>
+        </section>
+        <section className={styles.middle}>
+          <ul>
+            <li>code prix</li>
+            <li>Diffuseur Makassar</li>
+            <li>Distributeur MDS</li>
+          </ul>
+        </section>
+        <section>
+          <h3>partenaires</h3>
+          <div className={styles.partenaires}>
+            <img src="images/JapanFM.png" alt="Japan F M" />
+            <img src="images/subarashii.png" alt="subarashii" />
+          </div>
+        </section>
+      </div>
     </footer>
   );
 }

@@ -2,16 +2,56 @@
 
 .footer {
   margin-top: auto;
-  display: flex;
-  flex-direction: row;
   height: 25vh;
+  width: 100%;
   background-color: $color1;
+}
+
+.container {
+  margin: auto;
+  width: 60%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr; /* This creates three columns */
+  height: 100%;
+
   color: white;
-  align-items: center;
-  justify-content: center;
+  align-items: center; /* Align items vertically */
+
+  section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-left: 2vw;
+    padding-right: 2vw;
+    height: 60%;
+
+    ul {
+      display: flex;
+      flex-direction: column;
+      padding-inline-start: 0;
+    }
+  }
 }
 
 .middle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; /* Center content in middle */
   border-left: 1px solid white;
   border-right: 1px solid white;
+}
+
+.partenaires {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  img {
+    width: 5vw;
+    height: auto;
+    object-fit: contain;
+    margin-top: 5px;
+  }
 }
