@@ -7,7 +7,7 @@ function Header() {
     <header className={styles.header}>
       <section className={styles.section}>
         <Link to="/" className={styles.logoLink}>
-          <img src="icons/logo.png" alt="ototo logo" className={styles.logo} />
+          <img src="/icons/logo.png" alt="ototo logo" className={styles.logo} />
         </Link>
         <div className={styles.container}>
           <ul className={styles.list}>

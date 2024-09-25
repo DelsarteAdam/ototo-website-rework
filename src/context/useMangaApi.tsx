@@ -1,4 +1,12 @@
-import { createContext, useContext, useState, ReactNode } from "react";
+import {
+  createContext,
+  useContext,
+  useState,
+  ReactNode,
+  useEffect,
+} from "react";
+
+import dataMangaJson from "../data/ototoDataRework.json";
 
 type data = {
   manga_name: string;
@@ -16,36 +24,54 @@ type MangaApiProps = {
   children: ReactNode;
 };
 
-type MangaApiContextType = {
-  mangaData: data[] | null;
-  fetchMangaData: () => Promise<void>;
-};
+// type MangaApiContextType = {
+//   mangaData: data[];
+// };
 
-const ApiContext = createContext<MangaApiContextType | null>(null);
+const stockData = [
+  {
+    manga_name: "error",
+    manga_serie: "error",
+    path: "error",
+    tomes: ["error"],
+    auteur: "error",
+    illustrateur: "error",
+    genre: "error",
+    theme: "error",
+    resume: "error",
+  },
+];
+
+const ApiContext = createContext<data[]>(stockData);
 
 function useMangaApi() {
   return useContext(ApiContext);
 }
 
 function MangaApiProvider({ children }: MangaApiProps) {
-  const [mangaData, setMangaData] = useState<data[] | null>(null);
+  const [mangaData, setMangaData] = useState<data[]>(stockData);
 
   async function fetchMangaData() {
-    try {
-      const response = await fetch("./ototoDataRework.json");
-      const data = await response.json();
-      setMangaData(data);
-    } catch (error) {
-      console.error("Error fetching manga data:", error);
-    }
+    // try {
+    //   const response = await fetch("./ototoDataRework.json", {
+    //     cache: "no-store",
+    //   });
+    //   const data = await response.json();
+    //   setMangaData(data);
+    // } catch (error) {
+    //   console.error("Error fetching manga data:", error);
+    // }
+
+    setMangaData(dataMangaJson);
   }
 
-  const apiData = {
-    mangaData,
-    fetchMangaData,
-  };
+  useEffect(() => {
+    fetchMangaData();
+  }, []); // location.pathname
 
-  return <ApiContext.Provider value={apiData}>{children}</ApiContext.Provider>;
+  return (
+    <ApiContext.Provider value={mangaData}>{children}</ApiContext.Provider>
+  );
 }
 
 export { useMangaApi, MangaApiProvider };

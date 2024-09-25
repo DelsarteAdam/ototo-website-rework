@@ -23,8 +23,8 @@ function Footer() {
         <section>
           <h3>partenaires</h3>
           <div className={styles.partenaires}>
-            <img src="images/JapanFM.png" alt="Japan F M" />
-            <img src="images/subarashii.png" alt="subarashii" />
+            <img src="/images/JapanFM.png" alt="Japan F M" />
+            <img src="/images/subarashii.png" alt="subarashii" />
           </div>
         </section>
       </div>

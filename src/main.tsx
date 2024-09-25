@@ -15,11 +15,16 @@ import NotFound from "./pages/NotFound";
 import Layout from "./pages/Layout";
 
 import { MangaApiProvider } from "./context/useMangaApi";
+import Lecture from "./pages/Lecture";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Layout />,
+    element: (
+      <MangaApiProvider>
+        <Layout />
+      </MangaApiProvider>
+    ),
     errorElement: <NotFound />,
     children: [
       {
@@ -28,11 +33,7 @@ const router = createBrowserRouter([
       },
       {
         path: "accueil",
-        element: (
-          <MangaApiProvider>
-            <Accueil />
-          </MangaApiProvider>
-        ),
+        element: <Accueil />,
         errorElement: <NotFound />,
       },
       {
@@ -50,6 +51,10 @@ const router = createBrowserRouter([
       {
         path: "planning",
         element: <Planning />,
+      },
+      {
+        path: "lecture/:manga",
+        element: <Lecture />,
       },
     ],
   },

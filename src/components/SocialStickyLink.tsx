@@ -9,17 +9,17 @@ async function fetchSocialMedia(): Promise<socialType[]> {
     {
       link: "https://www.facebook.com/OtotoEditions/",
       name: "facebook",
-      icon: "icons/facebook.svg",
+      icon: "/icons/facebook.svg",
     },
     {
       link: "https://twitter.com/ototoedition",
       name: "twitter",
-      icon: "icons/twitter.svg",
+      icon: "/icons/twitter.svg",
     },
     {
       link: "https://www.instagram.com/ototoeditions/",
       name: "instagram",
-      icon: "icons/instagram.svg",
+      icon: "/icons/instagram.svg",
     },
   ];
 }
@@ -66,7 +66,7 @@ function SocialStickyLink() {
             className={`${styles.social} ${i == 0 ? styles.left : ""} ${
               i == socialMedia.length - 1 ? styles.right : ""
             }`}
-            key={i}
+            key={site.name + i}
             target="_blank"
             rel="noopener noreferrer"
           >
