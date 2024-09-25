@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styles from "./Footer.module.scss";
 
 function Footer() {
@@ -8,7 +9,9 @@ function Footer() {
           <ul>
             <li>catalogue</li>
             <li>planning</li>
-            <li>lecture en ligne</li>
+            <li>
+              <Link to="/lecture/Love_me_for_who_I_am">lecture en ligne</Link>
+            </li>
             <li>contact</li>
             <li>newsLetter</li>
           </ul>

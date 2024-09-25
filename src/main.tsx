@@ -58,6 +58,10 @@ const router = createBrowserRouter([
       },
     ],
   },
+  {
+    path: "notfound",
+    element: <NotFound />,
+  },
 ]);
 
 createRoot(document.getElementById("root")!).render(

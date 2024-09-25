@@ -5,14 +5,14 @@ import Footer from "../components/Footer";
 
 const Layout = () => {
   return (
-    <div>
+    <>
       <SocialStickyLink />
       <Header />
       <main>
         <Outlet />
       </main>
       <Footer />
-    </div>
+    </>
   );
 };
 
