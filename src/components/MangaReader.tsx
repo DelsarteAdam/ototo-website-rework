@@ -80,6 +80,7 @@ function MangaReader({ mangaData, pageMangaData, manga }: props) {
         />
         <div>
           <p>{mangaDetails?.manga_name}</p>
+          <p>{mangaDetails?.manga_serie}</p>
         </div>
       </div>
     </>

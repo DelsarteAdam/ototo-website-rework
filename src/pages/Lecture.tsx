@@ -51,11 +51,6 @@ function Lecture() {
   const formattedManga = manga.toLowerCase();
   const currentManga = mangasList.includes(formattedManga);
 
-  const mangaDetails = mangaData.find(
-    (manga) =>
-      manga.manga_name.replace(/\s/g, "_").toLowerCase() == formattedManga
-  );
-
   if (!currentManga) return <Navigate to="/notfound" replace />;
 
   //////////////////////////////////////////////////////////////////////////////
