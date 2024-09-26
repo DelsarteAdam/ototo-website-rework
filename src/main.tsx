@@ -16,7 +16,7 @@ import Layout from "./pages/Layout";
 
 import { MangaApiProvider } from "./context/useMangaApi";
 import Lecture from "./pages/Lecture";
-import Test from "./pages/test";
+import Test from "./pages/Test";
 
 const router = createBrowserRouter([
   {
