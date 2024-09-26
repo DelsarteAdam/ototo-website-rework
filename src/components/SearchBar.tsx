@@ -30,7 +30,7 @@ function SearchBar() {
   }, [inputText]);
 
   return (
-    <div>
+    <>
       <div className={styles.container}>
         <input
           type="text"
@@ -55,7 +55,7 @@ function SearchBar() {
           </a>
         ))}
       </div>
-    </div>
+    </>
   );
 }
 

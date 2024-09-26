@@ -1,11 +1,17 @@
 @use "sass:color";
 @import "../typoColor.scss";
 
+@mixin shadow {
+  -webkit-box-shadow: 0px 4px 2px 0px rgba(0, 0, 0, 0.47);
+  -moz-box-shadow: 0px 4px 2px 0px rgba(0, 0, 0, 0.47);
+  box-shadow: 0px 4px 2px 0px rgba(0, 0, 0, 0.47);
+}
+
 .container {
   display: flex;
   flex-direction: row;
-  background-color: white;
-
+  background-color: $color2;
+  height: 5vh;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
 
@@ -14,10 +20,12 @@
 
   position: absolute;
   right: 50px;
-  bottom: -33px;
+  bottom: -73px;
+
+  @include shadow();
 
   img {
-    height: 24px;
+    height: 80%;
     width: auto;
   }
 
@@ -37,14 +45,16 @@
 
 .result {
   position: absolute;
-  right: 130px;
-  bottom: -130px;
-  background-color: $color5;
+  right: 157px;
+  bottom: -175px;
+  background-color: $color2;
   border-radius: 10px;
   padding: 10px;
   width: 200px;
   display: flex;
   flex-direction: column;
+
+  @include shadow();
   a {
     &:hover {
       background-color: color.scale($color5, $lightness: 20%);

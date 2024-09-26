@@ -3,8 +3,9 @@ import { useMangaApi } from "../context/useMangaApi";
 import { Navigate } from "react-router-dom";
 import { useState, useEffect, useMemo } from "react";
 import Loader from "../components/Loader";
-import ImageLecture from "../components/ImageLecture";
+
 import pageData from "../data/lectureData.json";
+import MangaReader from "../components/MangaReader";
 
 const stockData = [
   {
@@ -25,14 +26,11 @@ function Lecture() {
   const mangaData = useMangaApi();
 
   const [isLoading, setIsLoading] = useState(true);
-  const [pageCount, setPageCount] = useState(0);
 
   const pageMangaData = useMemo(
     () => pageData.filter((data) => data.manga_name === manga),
     [manga]
   );
-
-  console.log(pageCount);
 
   //////////////////////////////////////////////////////////////////////////
 
@@ -53,46 +51,23 @@ function Lecture() {
   const formattedManga = manga.toLowerCase();
   const currentManga = mangasList.includes(formattedManga);
 
+  const mangaDetails = mangaData.find(
+    (manga) =>
+      manga.manga_name.replace(/\s/g, "_").toLowerCase() == formattedManga
+  );
+
   if (!currentManga) return <Navigate to="/notfound" replace />;
 
   //////////////////////////////////////////////////////////////////////////////
 
-  function handleClickImage(e: React.MouseEvent<HTMLDivElement, MouseEvent>) {
-    const coordX = e.clientX;
-
-    const divElement = e.currentTarget;
-
-    if (divElement) {
-      const rect = divElement.getBoundingClientRect();
-      const divX = rect.left;
-
-      const divWidth = rect.width;
-
-      //check right or left
-
-      const Xref = coordX - divX;
-      const middle = divWidth / 2;
-      if (Xref <= middle) {
-        if (pageCount > 0) {
-          setPageCount(pageCount - 1);
-        }
-      } else {
-        if (pageCount < pageMangaData.length - 1) {
-          setPageCount(pageCount + 1);
-        }
-      }
-    }
-  }
-
   // simple def of url
-  const url = pageMangaData.length > 0 ? pageMangaData[pageCount].path : "";
 
   return (
     <>
-      <ImageLecture
-        url={url}
-        height={"85vh"}
-        handleClickImage={handleClickImage}
+      <MangaReader
+        mangaData={mangaData}
+        pageMangaData={pageMangaData}
+        manga={manga}
       />
     </>
   );
