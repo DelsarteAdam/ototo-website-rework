@@ -20,15 +20,12 @@ function SearchElement({
   const [focus, setFocus] = useState<React.CSSProperties>({});
   const [focusWithin, setFocusWithin] = useState<React.CSSProperties>({});
 
-  // useEffect hook to handle after the component renders
-
-  // function handleClick() {
-  //   setClick(!click);
-  // }
-
   const handleFocus = () => {
     setFocus({
       outline: 0,
+      opacity: 1,
+      cursor: "initial",
+      width: `calc(100% - ${height})`,
     });
     setFocusWithin({
       width: "100%",
@@ -55,12 +52,14 @@ function SearchElement({
           style={{
             border: "1px solid red",
             display: "flex",
+
             borderRadius: `calc(${height} / 2)`,
             height: height,
             padding: `calc(${height} * 0.05)`,
             position: "relative",
             width: height, // = height if close
             transition: "width 300ms ease-in-out",
+            overflow: "hidden",
             ...focusWithin,
           }}
         >
@@ -73,12 +72,13 @@ function SearchElement({
               fontSize: `calc(${height} / 2 * 0.8)`,
               padding: "0 0.5em",
               border: "none",
-              background: "red",
               position: "absolute",
               top: 0,
               bottom: 0,
               left: 0,
+              opacity: 0,
               lineHeight: `calc(${height} * 0.05)`, // for all navigator
+              cursor: "pointer",
               ...focus,
             }}
             onFocus={() => handleFocus()}
@@ -91,6 +91,7 @@ function SearchElement({
               width: `calc(${height} * 0.90)`,
               borderRadius: `calc(${height} / 2)`,
               border: "none",
+              marginLeft: "auto",
             }}
           >
             <svg
