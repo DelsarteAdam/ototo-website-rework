@@ -1,5 +1,4 @@
-//import styles from "./SearchElement.module.scss";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 type props = {
   height: string;
@@ -7,7 +6,11 @@ type props = {
   fill: string;
   searchIconSize: number;
   maxWidth: string;
+  leftPosition: boolean;
 };
+
+let leftInput: React.CSSProperties = {};
+let leftbutton: React.CSSProperties = {};
 
 function SearchElement({
   height,
@@ -15,10 +18,20 @@ function SearchElement({
   fill,
   searchIconSize,
   maxWidth,
+  leftPosition,
 }: props) {
-  // const [click, setClick] = useState(false);
   const [focus, setFocus] = useState<React.CSSProperties>({});
   const [focusWithin, setFocusWithin] = useState<React.CSSProperties>({});
+
+  useEffect(() => {
+    if (leftPosition) {
+      leftInput = { left: 0 };
+      leftbutton = { marginLeft: "auto" };
+    } else {
+      leftInput = { right: 0 };
+      leftbutton = {};
+    }
+  }, [leftPosition]);
 
   const handleFocus = () => {
     setFocus({
@@ -75,7 +88,7 @@ function SearchElement({
               position: "absolute",
               top: 0,
               bottom: 0,
-              left: 0,
+              ...leftInput,
               opacity: 0,
               lineHeight: `calc(${height} * 0.05)`, // for all navigator
               cursor: "pointer",
@@ -91,7 +104,7 @@ function SearchElement({
               width: `calc(${height} * 0.90)`,
               borderRadius: `calc(${height} / 2)`,
               border: "none",
-              marginLeft: "auto",
+              ...leftbutton,
             }}
           >
             <svg

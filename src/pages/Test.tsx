@@ -10,6 +10,7 @@ function Test() {
         fill={"#f0c345"}
         searchIconSize={60}
         maxWidth={"1000px"}
+        leftPosition={false}
       />
     </div>
   );
