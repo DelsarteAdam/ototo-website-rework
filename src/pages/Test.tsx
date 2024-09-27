@@ -10,11 +10,11 @@ function Test() {
     <div className={styles.container}>
       <h1>test</h1>
       <SearchElement
-        height={"10vh"}
+        height={"50px"}
         color={"#f0c345"}
         fill={"#000000"}
         searchIconSize={60}
-        maxWidth={"1000px"}
+        maxWidth={"200px"}
         leftPosition={false}
         handleSearchInput={handleSearchInput}
       />

@@ -14,13 +14,13 @@ let leftInput: React.CSSProperties = {};
 let leftbutton: React.CSSProperties = {};
 
 function SearchElement({
-  height,
-  color,
-  fill,
-  searchIconSize,
-  maxWidth,
-  leftPosition,
-  handleSearchInput,
+  height = "50px",
+  color = "#f0c345",
+  fill = "#000000",
+  searchIconSize = 60,
+  maxWidth = "200px",
+  leftPosition = false,
+  handleSearchInput = () => {},
 }: props) {
   const [focus, setFocus] = useState<React.CSSProperties>({});
   const [focusWithin, setFocusWithin] = useState<React.CSSProperties>({});
