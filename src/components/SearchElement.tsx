@@ -7,6 +7,7 @@ type props = {
   searchIconSize: number;
   maxWidth: string;
   leftPosition: boolean;
+  handleSearchInput: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
 let leftInput: React.CSSProperties = {};
@@ -19,9 +20,13 @@ function SearchElement({
   searchIconSize,
   maxWidth,
   leftPosition,
+  handleSearchInput,
 }: props) {
   const [focus, setFocus] = useState<React.CSSProperties>({});
   const [focusWithin, setFocusWithin] = useState<React.CSSProperties>({});
+  const [buttonColor, setButtonColor] = useState<React.CSSProperties>({
+    background: color,
+  });
 
   useEffect(() => {
     if (leftPosition) {
@@ -43,11 +48,13 @@ function SearchElement({
     setFocusWithin({
       width: "100%",
     });
+    setButtonColor({ background: "#fff" });
   };
 
   const handleBlur = () => {
     setFocus({});
     setFocusWithin({});
+    setButtonColor({ background: color });
   };
 
   return (
@@ -97,6 +104,7 @@ function SearchElement({
                 }}
                 onFocus={() => handleFocus()}
                 onBlur={() => handleBlur()}
+                onChange={(e) => handleSearchInput(e)}
               />
               <button
                 style={{
@@ -105,7 +113,9 @@ function SearchElement({
                   width: `calc(${height} * 0.90)`,
                   borderRadius: `calc(${height} / 2)`,
                   border: "none",
+                  transition: "background 300ms ease-in-out",
                   ...leftbutton,
+                  ...buttonColor,
                 }}
               >
                 <svg
