@@ -58,7 +58,7 @@ function SocialStickyLink() {
   }
 
   return (
-    <header className={styles.topHeader}>
+    <div className={styles.topHeader}>
       <div className={styles.container}>
         {socialMedia.map((site, i) => (
           <a
@@ -74,7 +74,7 @@ function SocialStickyLink() {
           </a>
         ))}
       </div>
-    </header>
+    </div>
   );
 }
 

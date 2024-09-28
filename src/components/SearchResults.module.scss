@@ -1,0 +1,9 @@
+@import "../typoColor.scss";
+
+.searchContainer {
+  display: flex;
+  flex-direction: row;
+  height: 30vh;
+  width: 100%;
+  background-color: $color2;
+}

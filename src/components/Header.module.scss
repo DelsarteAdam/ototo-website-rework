@@ -39,6 +39,11 @@
     font-size: 2rem;
     font-weight: bold;
   }
+
+  a:visited {
+    color: inherit;
+    text-decoration: none;
+  }
 }
 
 .container {
@@ -50,7 +55,7 @@
 }
 
 .active {
-  color: $color5;
+  color: $color5 !important;
 }
 
 .logoLink {

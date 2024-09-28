@@ -3,10 +3,11 @@
 @import "../typoColor.scss";
 
 .topHeader {
+  position: absolute;
+  right: 0;
   display: flex;
   flex-direction: row;
-  height: 5vh;
-  width: 100%;
+
   justify-content: flex-end;
   padding-right: 2vw;
   align-items: center;

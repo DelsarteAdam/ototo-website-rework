@@ -1,4 +1,4 @@
-import SearchElement from "../components/SearchElement";
+import SearchElement from "../components/SearchBar";
 import styles from "./Test.module.scss";
 
 function Test() {
