@@ -7,7 +7,8 @@ type props = {
   searchIconSize: number;
   maxWidth: string;
   leftPosition: boolean;
-  handleSearchInput: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  handleSearchInput?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  handleFocusParent?: (e: React.FocusEvent<HTMLInputElement, Element>) => void;
 };
 
 let leftInput: React.CSSProperties = {};
@@ -21,6 +22,7 @@ function SearchBar({
   maxWidth = "200px",
   leftPosition = false,
   handleSearchInput = () => {},
+  handleFocusParent = () => {},
 }: props) {
   const [focus, setFocus] = useState<React.CSSProperties>({});
   const [focusWithin, setFocusWithin] = useState<React.CSSProperties>({});
@@ -38,7 +40,7 @@ function SearchBar({
     }
   }, [leftPosition]);
 
-  const handleFocus = () => {
+  const handleFocus = (e: React.FocusEvent<HTMLInputElement, Element>) => {
     setFocus({
       outline: 0,
       opacity: 1,
@@ -49,6 +51,7 @@ function SearchBar({
       width: "100%",
     });
     setButtonColor({ background: "#fff" });
+    handleFocusParent(e);
   };
 
   const handleBlur = () => {
@@ -98,7 +101,7 @@ function SearchBar({
               cursor: "pointer",
               ...focus,
             }}
-            onFocus={() => handleFocus()}
+            onFocus={(e) => handleFocus(e)}
             onBlur={() => handleBlur()}
             onChange={(e) => handleSearchInput(e)}
           />

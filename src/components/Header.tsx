@@ -1,4 +1,4 @@
-import { Link, NavLink } from "react-router-dom";
+import { useLocation, Link, NavLink } from "react-router-dom";
 import { useEffect, useState } from "react";
 import styles from "./Header.module.scss";
 import SearchBar from "./SearchBar";
@@ -34,9 +34,11 @@ const stockData = [
 
 function Header() {
   const mangaData = useMangaApi();
+  const location = useLocation();
 
   const [isLoading, setIsLoading] = useState(true);
   const [mangaSearchList, setMangaSearchList] = useState<data[]>(stockData);
+  const [searchVisible, setSearchVisible] = useState(false);
 
   useEffect(() => {
     const isStockData = JSON.stringify(mangaData) === JSON.stringify(stockData);
@@ -45,22 +47,45 @@ function Header() {
     }
   }, [mangaData]);
 
+  useEffect(() => {
+    setSearchVisible(false);
+  }, [location]);
+
   if (isLoading) return <Loader />;
 
   function handleSearchInput(e: React.ChangeEvent<HTMLInputElement>) {
+    if (e.target.value == "") {
+      setSearchVisible(false);
+    } else {
+      setSearchVisible(true);
+    }
     setMangaSearchList(searchManga(e.target.value));
   }
 
   function searchManga(query: string): data[] {
     const lowerCaseQuery = query.toLowerCase();
 
-    const results = mangaData
-      .filter((manga) =>
-        manga.manga_name.toLowerCase().includes(lowerCaseQuery)
-      )
-      .slice(0, 5);
+    const results = mangaData.filter((manga) =>
+      manga.manga_name.toLowerCase().includes(lowerCaseQuery)
+    );
 
-    return results;
+    // Shuffle the filtered results using Fisher-Yates algorithm
+    for (let i = results.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [results[i], results[j]] = [results[j], results[i]]; // Swap elements
+    }
+
+    return results.slice(0, 5);
+  }
+
+  function handleFocusParent(e: React.FocusEvent<HTMLInputElement, Element>) {
+    if (e.target.value != "") {
+      setSearchVisible(true);
+    }
+  }
+
+  function handleEscape() {
+    setSearchVisible(false);
   }
 
   return (
@@ -109,13 +134,17 @@ function Header() {
               maxWidth={"200px"}
               leftPosition={false}
               handleSearchInput={handleSearchInput}
+              handleFocusParent={handleFocusParent}
             />
           </div>
         </section>
       </header>
-      <div>
-        <SearchResults mangaSearchList={mangaSearchList} />
-      </div>
+      {searchVisible && (
+        <SearchResults
+          mangaSearchList={mangaSearchList}
+          handleEscape={handleEscape}
+        />
+      )}
     </>
   );
 }

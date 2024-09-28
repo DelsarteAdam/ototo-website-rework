@@ -17,6 +17,7 @@ import Layout from "./pages/Layout";
 import { MangaApiProvider } from "./context/useMangaApi";
 import Lecture from "./pages/Lecture";
 import Test from "./pages/Test";
+import Manga from "./pages/Manga";
 
 const router = createBrowserRouter([
   {
@@ -56,6 +57,10 @@ const router = createBrowserRouter([
       {
         path: "lecture/:manga",
         element: <Lecture />,
+      },
+      {
+        path: "manga/:manga",
+        element: <Manga />,
       },
     ],
   },

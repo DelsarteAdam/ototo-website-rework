@@ -3,7 +3,40 @@
 .searchContainer {
   display: flex;
   flex-direction: row;
-  height: 30vh;
+  height: 60vh;
   width: 100%;
   background-color: $color2;
+  justify-content: center;
+  padding-top: 5vh;
+}
+
+.vignetteContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 5vw;
+}
+
+.escape {
+  position: absolute;
+  width: 5vh;
+  height: 5vh;
+  border-radius: 1000px;
+
+  text-align: center;
+  align-content: center;
+  font-weight: bold;
+  font-size: 1.5rem;
+  background-color: $color4;
+  right: 5vw;
+  top: 7vh;
+  -webkit-box-shadow: -1px 2px 31px -4px rgba(0, 0, 0, 0.47);
+  -moz-box-shadow: -1px 2px 31px -4px rgba(0, 0, 0, 0.47);
+  box-shadow: -1px 2px 31px -4px rgba(0, 0, 0, 0.47);
+
+  &:hover {
+    transform: scale(1.1);
+    transition: transform 300ms ease-in-out;
+    cursor: pointer;
+  }
 }
