@@ -1,3 +1,4 @@
+import Carousel from "./Carousel";
 import styles from "./MangaDiv.module.scss";
 
 type data = {
@@ -31,14 +32,13 @@ function MangaDiv({ currentMangaData }: props) {
         <h3>Resumé:</h3>
         <p>{` ${currentMangaData.resume}`}</p>
         <h3>{`Volume paru: ${currentMangaData.tomes.length}`}</h3>
-        <div className={styles.volumeSection}>
-          {currentMangaData.tomes.map((tome, i) => (
-            <img
-              src={`/manga/${currentMangaData.path}/${currentMangaData.tomes[i]}`}
-              alt={currentMangaData.manga_name}
-            />
-          ))}
-        </div>
+
+        <Carousel
+          mangaData={currentMangaData}
+          height={"30vh"}
+          width={"50vw"}
+          backgroundColor={"#006ab2"}
+        />
       </section>
     </div>
   );

@@ -6,6 +6,7 @@
   align-items: center;
   height: 95vh;
   justify-content: center;
+  color: $color2;
 
   img {
     height: 80vh;
@@ -23,18 +24,5 @@
       margin-top: 2vh;
       padding-left: 2vw;
     }
-  }
-}
-
-.volumeSection {
-  display: flex;
-  flex-direction: row;
-  gap: 10px;
-  margin-top: 10px;
-  overflow: hidden;
-
-  img {
-    width: 10vw;
-    height: auto;
   }
 }

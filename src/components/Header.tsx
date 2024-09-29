@@ -128,8 +128,8 @@ function Header() {
             </ul>
             <SearchBar
               height={"50px"}
-              color={"#f0c345"}
-              fill={"#000000"}
+              color={"#e9609b"}
+              fill={"#000"}
               searchIconSize={60}
               maxWidth={"200px"}
               leftPosition={false}

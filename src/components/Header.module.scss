@@ -14,7 +14,7 @@
   background-color: $color2;
   align-items: center;
   justify-content: center;
-  @include shadow();
+  // @include shadow();
   z-index: 10;
 }
 
