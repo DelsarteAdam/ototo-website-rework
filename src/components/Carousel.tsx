@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import styles from "./Carousel.module.scss";
 
 type data = {
@@ -24,30 +24,56 @@ function Carousel({ mangaData, height, width, backgroundColor }: props) {
   const imgContainer = useRef<HTMLDivElement>(null);
   const imgElement = useRef<HTMLImageElement>(null);
   const [count, setCount] = useState(1);
-  const [maxCount, setMAxCount] = useState(0);
+  const [maxCount, setMaxCount] = useState(0);
   const [offset, setOffset] = useState<React.CSSProperties>({ left: 0 });
   const [left, setLeft] = useState(0);
   const [gap, setGap] = useState(0);
+  const [loaded, setLoaded] = useState<boolean[]>(
+    new Array(mangaData.tomes.length).fill(false)
+  );
+  const [allLoaded, setAllLoaded] = useState(false);
+
+  // Use useCallback to memoize the function and avoid recreating it unnecessarily
+  const calculateDimensions = useCallback(() => {
+    if (imgContainer.current && imgElement.current) {
+      const totalWidth = imgContainer.current.offsetWidth;
+      setLeft(totalWidth);
+
+      const imgWidth = imgElement.current.offsetWidth;
+      const imgPerSlide = Math.floor(totalWidth / imgWidth);
+
+      const totalGapSpace = totalWidth - imgPerSlide * imgWidth;
+      const calculatedGap =
+        imgPerSlide > 1 ? totalGapSpace / (imgPerSlide - 1) : 0;
+
+      setGap(calculatedGap);
+      setMaxCount(Math.ceil(mangaData.tomes.length / imgPerSlide));
+    }
+  }, [mangaData.tomes.length]);
 
   useEffect(() => {
-    if (imgContainer.current) {
-      function getImgDimension() {
-        const totalWidth = imgContainer.current!.offsetWidth;
-        setLeft(totalWidth);
-
-        const imgWidth = imgElement.current!.offsetWidth;
-        const imgPerSlide = Math.floor(totalWidth / imgWidth);
-
-        const totalGapSpace = totalWidth - imgPerSlide * imgWidth;
-        const calculatedGap = totalGapSpace / (imgPerSlide - 1);
-
-        setGap(calculatedGap);
-        setMAxCount(Math.ceil(mangaData.tomes.length / imgPerSlide));
-      }
-
-      getImgDimension();
+    if (loaded.every((status) => status)) {
+      setAllLoaded(true); // All images have loaded
     }
-  }, [mangaData.tomes.length, left]);
+  }, [loaded]);
+
+  useEffect(() => {
+    calculateDimensions();
+  }, [calculateDimensions, allLoaded]);
+
+  useEffect(() => {
+    // Add a resize event listener to recalculate the dimensions on window resize
+    window.addEventListener("resize", calculateDimensions);
+
+    return () => {
+      window.removeEventListener("resize", calculateDimensions);
+    };
+  }, [calculateDimensions]);
+
+  // useEffect(() => {
+
+  //   calculateDimensions();
+  // }, [calculateDimensions, left]);
 
   function handleNext() {
     setCount((prevCount) => {
@@ -70,6 +96,20 @@ function Carousel({ mangaData, height, width, backgroundColor }: props) {
       return prevCount;
     });
   }
+
+  const handleLoad = (i: number) => {
+    setLoaded((prevLoaded) => {
+      const newLoaded = [...prevLoaded];
+
+      while (newLoaded.length <= i) {
+        newLoaded.push(false);
+      }
+
+      newLoaded[i] = true;
+
+      return newLoaded;
+    });
+  };
 
   return (
     <div
@@ -112,6 +152,7 @@ function Carousel({ mangaData, height, width, backgroundColor }: props) {
               width: "auto",
               height: "100%",
             }}
+            onLoad={() => handleLoad(i)}
             ref={imgElement}
           />
         ))}

@@ -37,7 +37,8 @@ function MangaDiv({ currentMangaData }: props) {
           mangaData={currentMangaData}
           height={"30vh"}
           width={"50vw"}
-          backgroundColor={"#006ab2"}
+          backgroundColor={"#fff"}
+          key={currentMangaData.manga_name}
         />
       </section>
     </div>

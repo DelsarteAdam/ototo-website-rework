@@ -106,7 +106,7 @@ function Header() {
                   to="/catalogue"
                   className={({ isActive }) => (isActive ? styles.active : "")}
                 >
-                  catalogue
+                  Catalogue
                 </NavLink>
               </li>
               <li>
@@ -114,7 +114,7 @@ function Header() {
                   to="/actualite"
                   className={({ isActive }) => (isActive ? styles.active : "")}
                 >
-                  actualité
+                  Actualité
                 </NavLink>
               </li>
               <li>
@@ -122,7 +122,7 @@ function Header() {
                   to="/contact"
                   className={({ isActive }) => (isActive ? styles.active : "")}
                 >
-                  contact
+                  Contact
                 </NavLink>
               </li>
             </ul>
