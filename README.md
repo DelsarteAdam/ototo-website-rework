@@ -18,7 +18,8 @@ using react and typescript
 
 using python to get all picture of the manga collection
 
-```def getdata(url, timeout=10):
+```
+def getdata(url, timeout=10):
     try:
         r = requests.get(url, timeout=timeout)
         r.raise_for_status()  # Raises an exception for non-2xx responses
@@ -46,3 +47,64 @@ def get_img_url(url):
 ```
 
 🐍 then create a json with all the picture and some additional data .
+
+### Building part of the website ✏
+
+Re-create a manga reader with the same logic as using Background-image and not the img tag
+click left or right or use keyboard left or right
+_you can test it by clicking on "lecture en ligne" in the footer_
+
+```
+  function handleClickImage(e: React.MouseEvent<HTMLDivElement, MouseEvent>) {
+    const coordX = e.clientX;
+
+    const divElement = e.currentTarget;
+
+    if (divElement) {
+      const rect = divElement.getBoundingClientRect();
+      const divX = rect.left;
+
+      const divWidth = rect.width;
+
+      //check right or left
+
+      const Xref = coordX - divX;
+      const middle = divWidth / 2;
+      if (Xref <= middle) {
+        if (pageCount > 0) {
+          setPageCount(pageCount - 1);
+        }
+      } else {
+        if (pageCount < pageMangaData.length - 1) {
+          setPageCount(pageCount + 1);
+        }
+      }
+    }
+  }
+```
+
+### comparaison vs the original website as of October 2024
+
+---
+
+### main page
+
+![comparaison 01 ](readmeImg/page%20comp01.webp)
+
+---
+
+search tab created
+
+![search ](readmeImg/recherche%20.png)
+
+---
+
+### main manga page
+
+![comparaison 02 ](readmeImg/page%20comp02.webp)
+
+---
+
+### catalogue page
+
+![comparaison 02 ](readmeImg/page%20comp03.webp)

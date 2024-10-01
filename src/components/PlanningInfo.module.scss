@@ -1,19 +1,84 @@
+@import "../typoColor.scss";
+
 .container {
   display: flex;
   flex-direction: row;
   justify-content: center;
   height: 80vh;
   width: 100%;
+  margin-bottom: 20px;
+  margin-top: 20px;
 }
 
 .planning {
   width: 30%;
   margin-left: auto;
-  background-color: brown;
+  border-right: 1px solid gray;
+  margin-top: 10px;
+  margin-bottom: 10px;
+
+  h2 {
+    font-size: 2rem;
+  }
+}
+
+.mangaPlanning {
+  display: flex;
+  flex-direction: row;
+  height: 30%;
+  width: 90%;
+  margin: auto;
+  margin-top: 10px;
+}
+
+.mangaSortieInfo {
+  display: flex;
+  flex-direction: column;
+  margin-top: auto;
+  margin-left: 10px;
+  font-size: 1.5rem;
 }
 
 .actualite {
-  width: 30%;
+  width: 25%;
   margin-right: auto;
-  background-color: aqua;
+
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 10px;
+  display: flex;
+  flex-direction: column;
+  h2 {
+    font-size: 2rem;
+  }
+}
+
+.textActualite {
+  margin-top: auto;
+  height: 30%;
+  border-bottom: 1px solid gray;
+  margin-left: 10px;
+
+  h3 {
+    font-size: 1.5rem;
+    margin-bottom: 5%;
+  }
+  p {
+    margin-left: 20px;
+  }
+
+  button {
+    width: 50px;
+    height: 25px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: $color5;
+    border: 1px solid $color2;
+    color: $color2;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 10px;
+    float: right;
+  }
 }

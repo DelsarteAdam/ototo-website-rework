@@ -1,4 +1,19 @@
 .main {
   display: flex;
   flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 95vh;
+}
+
+.mangaInfo {
+  margin-left: 50px;
+  margin-top: 50px;
+  max-width: 40%;
+}
+
+.imgContainer {
+  -webkit-box-shadow: -1px 2px 31px -4px rgba(0, 0, 0, 0.47);
+  -moz-box-shadow: -1px 2px 31px -4px rgba(0, 0, 0, 0.47);
+  box-shadow: -1px 2px 31px -4px rgba(0, 0, 0, 0.47);
 }

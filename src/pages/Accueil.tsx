@@ -39,7 +39,7 @@ function Accueil() {
     <>
       <HeroComponent mangaData={mangaData} />
       <NewsLetter />
-      <PlanningInfo mangaData={mangaData} />
+      <PlanningInfo />
     </>
   );
 }
